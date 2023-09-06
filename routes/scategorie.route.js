@@ -5,7 +5,7 @@ const SCategorie=require("../models/scategorie")
 // afficher la liste des categories.
 router.get('/', async (req, res, )=> {
     try {
-    const scat = await SCategorie.find();
+    const scat = await SCategorie.find().populate("categorieID").exec();
     
     res.status(200).json(scat);
     } catch (error) {

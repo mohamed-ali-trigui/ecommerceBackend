@@ -1,11 +1,14 @@
 const express=require('express');
 const mongoose =require("mongoose");
 const dotenv =require('dotenv');
+const cors = require('cors')
 dotenv.config();
 const app = express();
+app.use(cors())
 const categorieRouter =require("./routes/categorie.route");
 const scategorieRouter =require("./routes/scategorie.route");
 const articleRouter =require("./routes/article.route")
+const paymentRouter = require( "./routes/payment.route")
 
 //BodyParser Middleware
 app.use(express.json());
@@ -32,5 +35,6 @@ console.log(`Server is listening on port ${process.env.PORT}`); });
 app.use('/api/categories', categorieRouter);
 app.use('/api/scategories', scategorieRouter);
 app.use('/api/articles', articleRouter);
+app.use('/api/payment', paymentRouter);
 
 module.exports = app;

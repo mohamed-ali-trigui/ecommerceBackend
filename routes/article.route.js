@@ -4,7 +4,7 @@ const Article=require("../models/article")
 // afficher la liste des articles.
 router.get('/', async (req, res, )=> {
     try {
-    const articles = await Article.find();
+    const articles = await Article.find().populate("scategorieID").exec();
     res.status(200).json(articles);
     } catch (error) {
     res.status(404).json({ message: error.message });
